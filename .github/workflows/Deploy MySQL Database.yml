@@ -141,6 +141,8 @@ jobs:
           ⏰ <b>时区:</b> <code>${{ steps.check_server.outputs.timezone }}</code>  
 
           🏠 <b>MySQL地址:</b> <code>${{ steps.get_local_ip.outputs.local_ip }}:3306</code>  
+          🐱 <b>Navicat URL地址:</b> 
+          <code>navicat://conn.mysql?Conn.Host=${{ steps.get_local_ip.outputs.local_ip }}&Conn.Name=MySQL%20Actions&Conn.Port=3306&Conn.UseHTTP=false&Conn.UseSSH=false&Conn.UseSSL=false&Conn.UseSocketFile=false&Conn.Username=root</code>  
 
           🕒 <b>当前时间:</b> <code>$current_time</code>  
           EOF
