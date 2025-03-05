@@ -233,7 +233,7 @@ jobs:
         run: |
           git clone https://github.com/langgenius/dify.git
           cd dify
-          # git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+          git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
           cd docker
           cp .env.example .env
           docker compose up -d
