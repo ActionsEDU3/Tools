@@ -63,13 +63,8 @@ jobs:
       - name: 部署 SQLMAP
         run: |
           git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git ${{ github.workspace }}/sqlmap-dev
-          # 为 sqlmap.py 添加执行权限
-          chmod +x ${{ github.workspace }}/sqlmap-dev/sqlmap.py
-          # 在 sqlmap-dev 目录下创建软链接，命名为 sqlmap
-          ln -s ${{ github.workspace }}/sqlmap-dev/sqlmap.py ${{ github.workspace }}/sqlmap-dev/sqlmap
-          # 将 sqlmap-dev 目录添加到 PATH 中
-          echo "${{ github.workspace }}/sqlmap-dev" >> $GITHUB_PATH
-          sqlmap --version
+          cd ${{ github.workspace }}/sqlmap-dev
+          python sqlmap.py -hh
 
       - name: 发送 Telegram 通知
         run: |
