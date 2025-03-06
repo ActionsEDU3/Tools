@@ -62,9 +62,8 @@ jobs:
 
       - name: 部署 SQLMAP
         run: |
-          git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git ${{ github.workspace }}/sqlmap-dev
-          cd ${{ github.workspace }}/sqlmap-dev
-          python sqlmap.py -hh
+          pip install sqlmap
+          sqlmap -h
 
       - name: 发送 Telegram 通知
         run: |
