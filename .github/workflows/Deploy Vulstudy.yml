@@ -64,6 +64,7 @@ jobs:
         run: |
           git clone https://github.com/c0ny1/vulstudy.git
           cd vulstudy
+          yq -i 'del(.services.mcir) | del(.services.mysqldb)' docker-compose.yml
           docker compose up -d
           docker compose ps -a
 
