@@ -2,11 +2,6 @@ name: Deploy SQLMAP
 
 on:
   workflow_dispatch:
-    inputs:
-      loudong:
-        description: '漏洞/环境的目录'
-        required: true
-        default: 'flask/ssti'
 
 jobs:
   Server:
