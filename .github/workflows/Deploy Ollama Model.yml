@@ -253,6 +253,10 @@ jobs:
           docker run -d --name tika -p 9998:9998 --restart unless-stopped apache/tika:latest-full
           echo "地址：IP:9998"
 
+      - name: 查看容器状态
+        run: |
+          docker ps -a
+
       - name: 发送 Telegram 通知
         run: |
           # 获取当前时间（UTC+8 时区，北京时间）
