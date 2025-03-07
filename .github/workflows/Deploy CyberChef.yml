@@ -63,6 +63,7 @@ jobs:
       - name: 部署 CyberChef
         run: |
           docker run -d -p 80:80 --name CyberChef --restart=always ghcr.io/gchq/cyberchef:latest
+          docker ps -a
 
       - name: 发送 Telegram 通知
         run: |
