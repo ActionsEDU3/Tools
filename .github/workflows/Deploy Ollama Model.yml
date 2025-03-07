@@ -376,8 +376,8 @@ jobs:
           docker compose -f docker-compose.yml up -d
           sleep 20
           docker logs ragflow-server
+          docker ps -a
 
-          echo "地址：IP:80"
 
       - name: 发送 Telegram 通知
         run: |
