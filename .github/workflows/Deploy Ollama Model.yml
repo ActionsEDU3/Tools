@@ -365,12 +365,6 @@ jobs:
           echo "提取到本地 IP: ${LOCAL_IP}"
           echo "local_ip=${LOCAL_IP}" >> $GITHUB_OUTPUT
 
-      # - name: 部署 MaxKB
-      #   run: |
-      #     echo "开始部署 MaxKB:"
-      #     docker run -d --name=maxkb --restart=always -p 6060:8080 -v ~/.maxkb:/var/lib/postgresql/data -v ~/.python-packages:/opt/maxkb/app/sandbox/python-packages registry.fit2cloud.com/maxkb/maxkb
-      #     echo "地址：IP:6060"
-
       - name: 部署 RAGFlow
         run: |
           echo "开始部署 RAGFlow:"
