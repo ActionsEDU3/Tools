@@ -65,8 +65,8 @@ jobs:
           mkdir -p ${{ github.workspace }}/archivebox
           cd ${{ github.workspace }}/archivebox
           curl -fsSL 'https://docker-compose.archivebox.io' > docker-compose.yml
-          docker compose run archivebox config --set ADMIN_USERNAME=admin
-          docker compose run archivebox config --set ADMIN_PASSWORD=111111
+          sed -i "/# - ADMIN_USERNAME=/s/# - ADMIN_USERNAME=admin/- ADMIN_USERNAME=aiden/" docker-compose.yml
+          sed -i "/# - ADMIN_PASSWORD=/s/# - ADMIN_PASSWORD=SomeSecretPassword/- ADMIN_PASSWORD=vv/" docker-compose.yml
           docker compose run archivebox init --setup
           docker compose up -d
           sleep 5
