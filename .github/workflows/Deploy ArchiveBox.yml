@@ -65,12 +65,14 @@ jobs:
           mkdir -p ${{ github.workspace }}/archivebox
           cd ${{ github.workspace }}/archivebox
           curl -fsSL 'https://docker-compose.archivebox.io' > docker-compose.yml
+          docker compose run archivebox config --set ADMIN_USERNAME=admin
+          docker compose run archivebox config --set ADMIN_PASSWORD=111111
           docker compose run archivebox init --setup
-          docker compose up
+          docker compose up -d
+          sleep 5
           docker ps -a
+          docker logs -f archivebox-archivebox-1
           docker compose run archivebox help
-
-
 
       - name: 发送 Telegram 通知
         run: |
