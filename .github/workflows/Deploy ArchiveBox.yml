@@ -71,7 +71,7 @@ jobs:
           docker compose up -d
           sleep 5
           docker ps -a
-          docker logs -f archivebox-archivebox-1
+          docker logs archivebox-archivebox-1
           docker compose run archivebox help
 
       - name: 发送 Telegram 通知
