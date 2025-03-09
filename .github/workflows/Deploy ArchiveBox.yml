@@ -2,6 +2,11 @@ name: Deploy ArchiveBox
 
 on:
   workflow_dispatch:
+    inputs:
+      ifupload:
+        description: '上传固定文件'
+        required: true
+        default: 'true'
 
 jobs:
   Server:
@@ -107,6 +112,13 @@ jobs:
                -d "chat_id=${{ secrets.TELEGRAM_TO }}" \
                -d "parse_mode=HTML" \
                -d "text=$message"
+
+      - name : 上传固定文件
+        if: ${{ github.event.inputs.ifupload == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: Artifact
+          path: ${{ github.workspace }}/archivebox
 
       - name: 启动SSH终端
         uses: mxschmitt/action-tmate@v3
