@@ -113,12 +113,12 @@ jobs:
                -d "parse_mode=HTML" \
                -d "text=$message"
 
+      - name: 启动SSH终端
+        uses: mxschmitt/action-tmate@v3
+        
       - name : 上传固定文件
         if: ${{ github.event.inputs.ifupload == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: Artifact
           path: ${{ github.workspace }}/archivebox
-
-      - name: 启动SSH终端
-        uses: mxschmitt/action-tmate@v3
